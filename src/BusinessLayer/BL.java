@@ -11,9 +11,16 @@ import static java.util.function.UnaryOperator.identity;
 public class BL implements IBL {
     @Override
     public Product getProductById(long productId) {
-//        Product prod = new Product("");
-//        return DataSource.allProducts;
-        return null;
+//        //Product prod = new Product("");
+//        for (int i = 0; i < DataSource.allProducts.size(); i++) {
+//            if (productId == i)
+//                return DataSource.allProducts.get(i);
+//        }
+//        //else
+//        return null;
+//      User match = users.stream().filter((user) -> user.getId() == 1).findAny().get();
+        return DataSource.allProducts.stream()
+                .filter(product -> product.getProductId() == productId).findFirst().orElse(null);
     }
 
     @Override
@@ -24,7 +31,11 @@ public class BL implements IBL {
 
     @Override
     public Customer getCustomerById(long customerId) {
-        //To do
+        for (int i = 0; i < DataSource.allCustomers.size(); i++) {
+            if (customerId == i)
+                return DataSource.allCustomers.get(i);
+        }
+        //else
         return null;
     }
 
