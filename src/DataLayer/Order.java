@@ -14,7 +14,6 @@ public class Order {
     private Date orderDate;//The date the order was created
     private Date deliveryDate; //The date the order was sent
     private OrderStatus status;
-
     private long customrId;
 
     public Order(String orderInfo) throws ParseException {
@@ -24,11 +23,11 @@ public class Order {
         //Date tempOrderDate = new SimpleDateFormat("dd/MM/yyyy").parse(objectData[4]);
         Date tempDeliveryDate = dateFormat.parse(objectData[7]);
 
+        setCustomrId(parseLong(objectData[12]));
         setOrderId(parseLong(objectData[1]));
         setOrderDate(tempOrderDate);
         setDeliveryDate(tempDeliveryDate);
         setStatus(OrderStatus.valueOf(objectData[9]));
-        setCustomrId(parseLong(objectData[12]));
 
     }
 
